@@ -36,11 +36,11 @@ public class UsuarioLogica {
         System.out.println("2 ----- Gato");
         switch (teclado.nextInt()){
             case 1:
-                registro = new PerroLogica();
+                registro = new PerroTemplate();
                 registro.registrar();
                 break;
             case 2:
-                registro = new GatoLogica();
+                registro = new GatoTemplate();
                 registro.registrar();
                 break;
             default:

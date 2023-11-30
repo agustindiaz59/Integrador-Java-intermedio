@@ -25,17 +25,19 @@ public class Turno implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "turno", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Perro> perro = new LinkedHashSet<>();
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "gato_id")
+    private Gato gato;
 
-    @OneToMany(mappedBy = "turno", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Gato> gatoes = new LinkedHashSet<>();
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "perro_id")
+    private Perro perro;
 
     @Column(name = "aprobado")
     private Boolean aprobado;
 
     @Column(name = "fecha")
-    private LocalDate fecha;
+    private String fecha;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "medico_id")
@@ -44,11 +46,11 @@ public class Turno implements Serializable {
     @Override
     public String toString() {
         return "Turno{" +
-                "id=" + id +
-                ", perro=" + perro +
-                ", gatoes=" + gatoes +
-                ", aprobado=" + aprobado +
-                ", fecha=" + fecha +
+                "id = " + id +
+                ", perro = " + perro +
+                ", gato = " + gato +
+                ", aprobado = " + aprobado +
+                ", fecha = " + fecha +
                 '}';
     }
 }

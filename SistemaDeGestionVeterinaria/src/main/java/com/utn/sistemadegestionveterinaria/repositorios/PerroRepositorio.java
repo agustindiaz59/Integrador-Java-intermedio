@@ -22,7 +22,7 @@ public class PerroRepositorio implements PerroDAO {
 
     @Override
     public Perro traer(Perro perro) {
-        controlador.traer(perro);
+        return controlador.traer(perro);
     }
 
     @Override

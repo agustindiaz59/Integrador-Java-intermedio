@@ -6,7 +6,9 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -15,7 +17,7 @@ import java.util.Set;
 @Table(name = "new_entity")
 public class Medico {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -24,6 +26,6 @@ public class Medico {
     private String nombre;
 
     @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Turno> turno = new LinkedHashSet<>();
+    private List<Turno> turno = new ArrayList<>();
 
 }
